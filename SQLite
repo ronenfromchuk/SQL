@@ -9,4 +9,6 @@ select * from COMPANY where address like 'T%';
 select * from COMPANY where address like 'T%' and SALARY > 80000
 SELECT * from COMPANY where age=25 or age=30;
 update COMPANY set age=27 where id=5;
+delete from COMPANY where address like 'Rich-Mond%';
+select count(*) from COMPANY;
 '''
