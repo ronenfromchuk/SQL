@@ -1,0 +1,134 @@
+### create table ###
+
+CREATE TABLE COMPANY(
+ ID INT PRIMARY KEY NOT NULL,
+ NAME TEXT NOT NULL,
+ AGE INT NOT NULL,
+ ADDRESS CHAR(50),
+ SALARY REAL
+);
+
+### insert ###
+
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1, 'Paul', 32, 'California', 20000.00 );
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (2, 'Allen', 25, 'Texas', 15000.00 );
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (5, 'David', 27, 'Texas', 85000.00 );
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (6, 'Kim', 22, 'South-Hall', 45000.00 );
+
+### select ###
+
+SELECT * from COMPANY;
+Select * from COMPANY where id =1;
+select id, name from COMPANY
+  where id > 2;
+select * from COMPANY where name='Paul';
+select * from COMPANY where address like 'T%';
+select * from COMPANY where address like '%T%' and SALARY > 80000
+SELECT * from COMPANY where age=25 or age=30;
+select count(*) from COMPANY;
+select avg(salary) from COMPANY
+
+### update ###
+update COMPANY set age=21 where id=5;
+
+### delete ###
+delete from COMPANY where address like 'Rich-Mond%';
+
+### drop table ###
+drop table COMPANY
+
+#1. Create/Drop table:
+CREATE TABLE shopping (id INTEGER PRIMARY KEY, name TEXT, amount
+INTEGER); --> הפקודה יוצרת טבלה חדשה, הכוללת id, name, amount עמודות
+DROP TABLE shopping --> איפוס הטבלה
+
+#2. Rename table:
+ALTER table shopping RENAME to shopp --> משנה את שם הטבלה לשופ
+ALTER table shopp RENAME to shopping --> מחזיר את השם בחזרה לשופינג
+
+#3. Insert rows into table:
+INSERT INTO shopping VALUES (1, 'Avokado', 5); --> ממלא
+INSERT INTO shopping VALUES (2, 'Milk', 2); --> את
+INSERT INTO shopping VALUES (3, 'Bread', 3); --> הטבלה
+INSERT INTO shopping VALUES (4, 'Chocolate', 8); --> עם
+INSERT INTO shopping VALUES (5, 'Bamba', 5); --> הערכים
+INSERT INTO shopping VALUES (6, 'Orange', 10); --> שבסוגריים
+
+#4. Display table:
+select * from shopping --> מציג את הטבלה המלאה
+
+#5 מציג את העמודות של : id & name מטבלת שופינג:
+SELECT id, name FROM shopping
+
+#6 הצגת כמות כאשר:
+SELECT * FROM shopping WHERE amount > 5 --> מציג טבלה היכן שהכמות גדולה מ-5
+SELECT * FROM shopping WHERE amount = 2 --> מציג טבלה היכן שהכמות שווה ל-2
+SELECT * FROM shopping WHERE name LIKE 'Bamba' --> מציג את העמודה היכן שהמילה במבה נמצאת
+
+#7 מוחק עמודה
+DELETE from shopping WHERE name like 'Orange'; --> מוחק עמודה היכן שהמילה תפוז נמצאת
+
+#8 מעדכן טבלה
+UPDATE shopping SET name = 'Bisli' WHERE name LIKE 'Bamba' --> מעדכן את השם במקום במבה לביסלי
+UPDATE shopping SET amount=1 WHERE name LIKE 'Milk' --> מעדכן את המוצר לחלב היכן שהכמות שווה ל-1
+
+#9 מוסיף לטבלה טור של מעבר
+ALTER TABLE shopping ADD COLUMN maavar
+
+#10 מעדכן את הנתונים בטור של המעבר
+UPDATE shopping SET maavar=6 WHERE id=1; --> מעדכן היכן שה id שווה ל1
+UPDATE shopping SET maavar=3 WHERE id=2; --> מעדכן היכן שה id שווה ל2
+UPDATE shopping SET maavar=12 WHERE id=3; --> מעדכן היכן שה id שווה ל3
+UPDATE shopping SET maavar=8 WHERE id=4; --> מעדכן היכן שה id שווה ל4
+UPDATE shopping SET maavar=5 WHERE id=5; --> מעדכן היכן שה id שווה ל5
+
+#11 הצגת שורות מבוקשות
+SELECT * FROM shopping WHERE amount > 1 AND maavar > 5 --> מציג היכן שהכמות גדולה מ-1 ומעבר גדול מ-5
+SELECT * FROM shopping WHERE maavar BETWEEN 3 AND 5 --> מציג היכן שמספר המעבר הוא בין 3 ל-5
+
+#12 מציג טבלה בסדר עולה ויורד לפי המעבר
+SELECT * FROM shopping ORDER BY maavar --> מציג טבלה בסדר עולה לפי המעבר
+SELECT * FROM shopping ORDER BY maavar DESC --> מציג טבלה בסדר יורד לפי המעבר
+
+#13 טבלה חדשה
+CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT); --> יצירת טבלה חדשה, כולל טורים של id & name
+INSERT INTO books VALUES (1, 'SQL PROGRAMMING'); --> הכנסת ערכים לטורים
+INSERT INTO books VALUES (2, 'CSHARP PROGRAMMING'); --> הכנסת ערכים לטורים
+DELETE FROM books; --> מוחק את כל הערכים של הטבלה
+
+#14 הצגת ערכים
+SELECT COUNT(*)from shopping
+SELECT MAX(amount) from shopping --> מציג את הכמות המרבית בטבלה
+SELECT AVG(amount) from shopping --> מציג את הכמות הממוצעת בטבלה
+SELECT MIN(amount) from shopping --> מציג את הכמות המינימאלית בטבלה
+
+#15 הוספת ערכים לטבלה
+INSERT INTO shopping VALUES (6, 'Onions', 3, 6);
+INSERT INTO shopping VALUES (7, 'Orio', 1, 8);
+Select maavar, COUNT(*)FROM shopping GROUP BY maavar
+
+#16 הצגת כותרת בשם אחר
+SELECT id AS "SECRET", name, amount, maavar FROM shopping --> מציג את הכותרת SECRET כ id
+
+#17 מציג בקבוצות המעבר הגדולים מ-1
+Select maavar, COUNT(*)FROM shopping GROUP BY maavar HAVING COUNT(*)>1
+
+#18 יצירת טבלה חדשה וצירופה לטבלת שופינג הקיימת
+CREATE TABLE prices (id INTEGER PRIMARY KEY, price INTEGER);
+INSERT INTO prices VALUES (1, 3);
+INSERT INTO prices VALUES (2, 7);
+INSERT INTO prices VALUES (3, 12);
+INSERT INTO prices VALUES (4, 5);
+INSERT INTO prices VALUES (5, 3);
+INSERT INTO prices VALUES (6, 2);
+INSERT INTO prices VALUES (7, 10);
+SELECT s.id, s.name, s.amount, s.maavar, p.price FROM shopping s JOIN
+prices p ON s.id=p.id
