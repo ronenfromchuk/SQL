@@ -1,0 +1,22 @@
+targil:
+1. run our code from git
+https://github.com/python290821/15.12.2021
+open pg admin or data-grip and view the table
+
+2.
+CREATE TABLE COMPANY(
+ ID INT PRIMARY KEY NOT NULL [auto-increment],
+ NAME String (50) NOT NULL unique,
+ AGE INT NOT NULL [default = 0],
+ ADDRESS String(50) not null,
+ SALARY REAL
+);
+
+insert 1 row [add]
+insert 2 rows at once [add_all]
+select all and print
+select whenever age > 10 and print
+update whenever age > 10 to 25
+select all and print
+delete where age > 20
+select all and print
