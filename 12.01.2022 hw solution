@@ -1,3 +1,6 @@
+write sp_get_movies_higer_than which gets a price as a parameter and returns all the movies which their price is above the given argument
+write sp_get_movies_from_country function which gets a country name as a parameter and returns all of the movies title and release-date from this country
+
 drop function sp_get_movies_higher_than;
 CREATE or replace function sp_get_movies_higher_than(_min double precision)
 returns TABLE(id bigint, title text, release_date timestamp,
